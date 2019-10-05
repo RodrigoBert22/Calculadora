@@ -52,12 +52,12 @@
             // txtDisplay
             // 
             this.txtDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDisplay.Location = new System.Drawing.Point(12, 56);
+            this.txtDisplay.Location = new System.Drawing.Point(12, 23);
             this.txtDisplay.Multiline = true;
             this.txtDisplay.Name = "txtDisplay";
             this.txtDisplay.ReadOnly = true;
             this.txtDisplay.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDisplay.Size = new System.Drawing.Size(371, 55);
+            this.txtDisplay.Size = new System.Drawing.Size(371, 71);
             this.txtDisplay.TabIndex = 0;
             this.txtDisplay.Text = "0";
             // 
@@ -246,17 +246,20 @@
             this.btnDecimal.TabIndex = 17;
             this.btnDecimal.Text = ",";
             this.btnDecimal.UseVisualStyleBackColor = true;
+            this.btnDecimal.Click += new System.EventHandler(this.btnDecimal_Click);
             // 
             // txtHist
             // 
-            this.txtHist.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHist.Location = new System.Drawing.Point(12, 12);
+            this.txtHist.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtHist.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHist.Location = new System.Drawing.Point(13, 24);
             this.txtHist.Multiline = true;
             this.txtHist.Name = "txtHist";
             this.txtHist.ReadOnly = true;
             this.txtHist.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtHist.Size = new System.Drawing.Size(210, 38);
+            this.txtHist.Size = new System.Drawing.Size(117, 56);
             this.txtHist.TabIndex = 18;
+            this.txtHist.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // Form1
             // 
@@ -283,7 +286,7 @@
             this.Controls.Add(this.btnUm);
             this.Controls.Add(this.txtDisplay);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Calculadora";
             this.ResumeLayout(false);
             this.PerformLayout();
 
