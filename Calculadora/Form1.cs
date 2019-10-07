@@ -13,9 +13,9 @@ namespace Calculadora
 
     public partial class Form1 : Form
     {
-        bool operacaoFormada = false;
-        string operador = "";
-        double resultado = 0;
+        bool operacaoFormada;
+        string operador;
+        double resultado;
         public Form1()
         {
             InitializeComponent();
@@ -32,28 +32,42 @@ namespace Calculadora
         }
 
         private void Operador(object sender, EventArgs e)
-        {
+        {            
             operacaoFormada = true;
             Button btn = (Button)sender;
             string novoOperador = btn.Text;
 
             txtHist.Text = txtHist.Text + " " + txtDisplay.Text + " " + novoOperador;
 
-            switch (operador)
-            {
-                case "+": txtDisplay.Text = (resultado + Double.Parse(txtDisplay.Text)).ToString(); break;
-                case "-": txtDisplay.Text = (resultado - Double.Parse(txtDisplay.Text)).ToString(); break;
-                case "x": txtDisplay.Text = (resultado * Double.Parse(txtDisplay.Text)).ToString(); break;
-                case "÷": txtDisplay.Text = (resultado / Double.Parse(txtDisplay.Text)).ToString(); break;
-                default: break;
-            }
-
-
+            Calcula();
+            
             resultado = Double.Parse(txtDisplay.Text);
             operador = novoOperador;
 
         }
 
+        private void Calcula()
+        {
+            switch (operador)
+            {
+                case "+": txtDisplay.Text = (resultado + Double.Parse(txtDisplay.Text)).ToString(); break;
+                case "-": txtDisplay.Text = (resultado - Double.Parse(txtDisplay.Text)).ToString(); break;
+                case "x": txtDisplay.Text = (resultado * Double.Parse(txtDisplay.Text)).ToString(); break;
+                case "÷":
+                    if (txtDisplay.Text == "0")
+                    {
+                        txtDisplay.Text = "Divisão por zero";
+                    }
+                    else
+                    {
+                        txtDisplay.Text = (resultado / Double.Parse(txtDisplay.Text)).ToString();
+                    }
+
+                    break;
+
+                default: break;
+            }
+        }
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
@@ -68,16 +82,14 @@ namespace Calculadora
             txtHist.Text = "";
             operacaoFormada = true;
 
-            switch (operador)
+            Calcula();
+
+            resultado = 0;
+            if (Double.TryParse(txtDisplay.Text, out var valor))
             {
-                case "+": txtDisplay.Text = (resultado + Double.Parse(txtDisplay.Text)).ToString(); break;
-                case "-": txtDisplay.Text = (resultado - Double.Parse(txtDisplay.Text)).ToString(); break;
-                case "x": txtDisplay.Text = (resultado * Double.Parse(txtDisplay.Text)).ToString(); break;
-                case "÷": txtDisplay.Text = (resultado / Double.Parse(txtDisplay.Text)).ToString(); break;
-                default: break;
+                resultado = valor;
             }
 
-            resultado = Double.Parse(txtDisplay.Text);
             txtDisplay.Text = resultado.ToString();
             resultado = 0;
             operador = "";
