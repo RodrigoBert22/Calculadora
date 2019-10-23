@@ -13,6 +13,8 @@ namespace CalculadoraPOO
     public partial class Form1 : Form
     {
         Calcular calcular = new Calcular();
+        Numero numero = new Numero();
+
         bool operacaoFormada;
         string operador;
         public double valor1;
@@ -27,9 +29,10 @@ namespace CalculadoraPOO
         {
             if (txtDisplay.Text == "0" || operacaoFormada)
                 txtDisplay.Clear();
-
             Button btn = (Button)sender;
-            txtDisplay.Text += btn.Text;
+            
+            txtDisplay.Text += numero.numeroCalc(Convert.ToDouble(btn.Text));
+            
             operacaoFormada = false;
         }
 
