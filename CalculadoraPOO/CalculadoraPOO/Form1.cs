@@ -58,7 +58,7 @@ namespace CalculadoraPOO
             calcular.resultado = 0;
             operador = "";
             valor1 = 0;
-            valor1 = 0;
+            
         }
 
         private void btnIgual_Click(object sender, EventArgs e)
@@ -72,6 +72,26 @@ namespace CalculadoraPOO
             txtDisplay.Text = calcular.resultado.ToString();
            
 
+        }
+
+        private void btnDecimal_Click(object sender, EventArgs e)
+        {
+
+            if (!operacaoFormada && !txtDisplay.Text.Contains(","))
+            {
+                txtDisplay.Text += ",";
+            }
+            else if (operacaoFormada)
+            {
+                txtDisplay.Text = "0";
+            }
+
+            if (!txtDisplay.Text.Contains(","))
+            {
+                txtDisplay.Text += ",";
+            }
+
+            operacaoFormada = false;
         }
     }
 }

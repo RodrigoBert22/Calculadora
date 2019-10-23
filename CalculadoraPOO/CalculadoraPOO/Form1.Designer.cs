@@ -217,6 +217,7 @@
             this.btnDecimal.TabIndex = 17;
             this.btnDecimal.Text = ",";
             this.btnDecimal.UseVisualStyleBackColor = true;
+            this.btnDecimal.Click += new System.EventHandler(this.btnDecimal_Click);
             // 
             // txtHist
             // 
